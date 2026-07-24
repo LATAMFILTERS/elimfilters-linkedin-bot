@@ -5,7 +5,7 @@ services:
     plan: free
     buildCommand: npm ci
     startCommand: npm start
-    healthCheckPath: /health
+    healthCheckPath: /ready
     envVars:
       - key: NODE_VERSION
         value: "20"
@@ -13,17 +13,23 @@ services:
         value: "866h35ln0x9989"
       - key: LINKEDIN_CLIENT_SECRET
         sync: false
+      - key: LINKEDIN_ACCESS_TOKEN
+        sync: false
       - key: LINKEDIN_ORGANIZATION_ID
         value: "133064152"
       - key: LINKEDIN_VERIFY_TOKEN
-        value: elimfilters_linkedin_webhook_verify_2026
+        sync: false
+      - key: LINKEDIN_API_VERSION
+        value: "202606"
       - key: NVIDIA_MODEL
         value: nvidia/nemotron-3-super-120b-a12b
+      - key: NVIDIA_NIM_API_KEY
+        sync: false
+      - key: KNOWLEDGE_BASE_URL
+        sync: false
       - key: DRY_RUN
         value: "true"
       - key: DATABASE_URL
         fromDatabase:
           name: elimfilters-instagram-db
           property: connectionString
-      - key: NVIDIA_NIM_API_KEY
-        sync: false
