@@ -4,12 +4,14 @@ import { createLinkedinClient } from "./linkedin.js";
 export function createWorker({ config, db }) {
   const nvidia = createNvidiaClient({ apiKey: config.nvidiaApiKey, model: config.nvidiaModel });
   const linkedin = createLinkedinClient({
-    clientId: config.linkedinClientId,
-    clientSecret: config.linkedinClientSecret,
-    organizationId: config.linkedinOrganizationId
+    accessToken: config.linkedinAccessToken,
+    organizationId: config.linkedinOrganizationId,
+    apiVersion: config.linkedinApiVersion
   });
 
   return {
+    publisherConfigured: linkedin.isConfigured(),
+
     async run() {
       const jobs = await db.claim(5);
       if (!jobs.length) return;
@@ -19,16 +21,21 @@ export function createWorker({ config, db }) {
           console.log(`[LinkedIn Worker] Processing job ${job.event_id}: "${job.message_text.slice(0, 50)}..."`);
           const replyText = await nvidia.generateReply(job.message_text);
 
+          if (!replyText || replyText === "NO_REPLY") {
+            await db.complete(job.event_id, "NO_REPLY");
+            continue;
+          }
+
           if (config.dryRun) {
             console.log(`[LinkedIn Worker] DRY_RUN=true: Draft reply for ${job.event_id} -> "${replyText}"`);
             await db.complete(job.event_id, `[DRY_RUN DRAFT] ${replyText}`);
             continue;
           }
 
-          if (job.event_type === 'message' || job.event_type === 'dm') {
+          if (job.event_type === "message" || job.event_type === "dm") {
             await linkedin.replyToDirectMessage({ senderUrn: job.author_urn, replyText });
           } else {
-            await linkedin.replyToComment({ targetUrn: job.target_urn, commentId: job.event_id, replyText });
+            await linkedin.replyToComment({ targetUrn: job.target_urn, replyText });
           }
 
           await db.complete(job.event_id, replyText);
