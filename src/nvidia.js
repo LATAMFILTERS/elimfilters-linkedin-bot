@@ -45,9 +45,9 @@ export function createNvidiaClient({ apiKey, model, pool }) {
 
       if (!apiKey) {
         if (catalogContext) {
-          return `Estimado contacto, gracias por escribir a ELIMFILTERS. ${catalogContext.replace(/\n+/g, ' ')} Para más información visite https://part-search.elimfilters.com.`;
+          return `Estimado contacto, gracias por escribir a ELIMFILTERS. ${catalogContext.replace(/\n+/g, ' ')} Para más información visite https://elimfilters.com/instagram.`;
         }
-        return `Estimado contacto, gracias por escribir a ELIMFILTERS. Para consultar compatibilidad y números de parte, por favor use nuestro buscador oficial: https://part-search.elimfilters.com. Para solicitudes de distribución, visite https://elimfilters.com.`;
+        return `Estimado contacto, gracias por escribir a ELIMFILTERS. Para consultar compatibilidad y números de parte, por favor use nuestro buscador oficial: https://elimfilters.com/instagram. Para solicitudes de distribución, visite https://elimfilters.com.`;
       }
 
       const prompt = `${SYSTEM_PROMPT}\n\n[CONOCIMIENTO BASE OFICIAL]:\n${ELIMFILTERS_KNOWLEDGE}${catalogContext}\n\n[MENSAJE EN LINKEDIN]: "${userMessage}"\n\nResponde en español de manera ejecutiva y profesional:`;
@@ -73,10 +73,10 @@ export function createNvidiaClient({ apiKey, model, pool }) {
 
         const data = await res.json();
         const reply = data.choices?.[0]?.message?.content?.trim();
-        return reply || `Estimado contacto, gracias por su mensaje a ELIMFILTERS. Puede consultar nuestro catálogo en https://part-search.elimfilters.com.`;
+        return reply || `Estimado contacto, gracias por su mensaje a ELIMFILTERS. Puede consultar nuestro catálogo en https://elimfilters.com/instagram.`;
       } catch (err) {
         console.error("[nvidia-nim]", err.message);
-        return `Estimado contacto, gracias por su mensaje a ELIMFILTERS. Puede consultar nuestro catálogo en https://part-search.elimfilters.com.`;
+        return `Estimado contacto, gracias por su mensaje a ELIMFILTERS. Puede consultar nuestro catálogo en https://elimfilters.com/instagram.`;
       }
     }
   };

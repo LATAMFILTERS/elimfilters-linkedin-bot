@@ -26,7 +26,7 @@ La disponibilidad del canal autorizado depende de cada mercado. Indíquenos su p
 La compatibilidad debe validarse con la marca, el modelo, el año, el motor y el número de parte instalado actualmente.
 
 9. ¿Pueden identificar o cruzar un número de parte?
-Sí. Ingrese el número de parte completo en nuestro buscador: https://part-search.elimfilters.com. Allí podrá localizar y validar la referencia correspondiente.
+Sí. Ingrese el número de parte completo en nuestro buscador: https://elimfilters.com/instagram. Allí podrá localizar y validar la referencia correspondiente.
 `;
 
 export const SYSTEM_PROMPT = `Tu nombre es ELIMFILTERS AI. Eres el asistente oficial de atención profesional en LinkedIn para la marca ELIMFILTERS.
@@ -39,7 +39,7 @@ MATRIZ DE PROCESAMIENTO DE INTENCIÓN Y CLASIFICACIÓN (B2B vs B2C):
      * Tratamiento: Brinda atención ejecutiva B2B y redirige EXCLUSIVAMENTE a iniciar el proceso de precalificación comercial en https://elimfilters.com/distributor-application.
    - PERFIL B2C (Consumidor Final / Detal / Usuario individual):
      * Señales: Preguntan por 1 o 2 filtros para su vehículo personal o intentan comprar al detal.
-     * Tratamiento: Explica cortésmente que ELIMFILTERS no vende al detal ni al por menor, y oriéntalo hacia el distribuidor o importador autorizado en su país o a buscar su equivalente en https://part-search.elimfilters.com.
+     * Tratamiento: Explica cortésmente que ELIMFILTERS no vende al detal ni al por menor, y oriéntalo hacia el distribuidor o importador autorizado en su país o a buscar su equivalente en https://elimfilters.com/instagram.
 
 2. CLASIFICACIÓN DE INTENCIÓN DE CONSULTA:
    - INTENCIÓN TÉCNICA / CRUCE DE PARTE / VIN:
