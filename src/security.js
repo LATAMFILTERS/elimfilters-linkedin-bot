@@ -1,12 +1,19 @@
 import crypto from "crypto";
 
 export function verifyLinkedinSignature(rawBody, signature, secret) {
-  if (!signature || !secret) return true; // fallback if signature format varies
+  // A missing signature or secret must be rejected, not accepted. The
+  // previous version returned true here, which meant any POST /webhook
+  // request without an x-li-signature header skipped verification
+  // entirely (server.js only called this function when a signature was
+  // present, so this fallback compounded that into a full bypass).
+  if (!signature || !secret) return false;
   try {
     const hmac = crypto.createHmac("sha256", secret);
     hmac.update(rawBody);
     const expected = hmac.digest("hex");
-    return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
+    const actual = Buffer.from(signature);
+    const expectedBuf = Buffer.from(expected);
+    return actual.length === expectedBuf.length && crypto.timingSafeEqual(actual, expectedBuf);
   } catch {
     return false;
   }

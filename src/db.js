@@ -40,40 +40,6 @@ export function createDb(connectionString) {
           processed_at TIMESTAMPTZ
         )
       `);
-
-      // Propagate Heavy Duty equipment applications across cross-references automatically
-      try {
-        await pool.query(`
-          WITH crossref_fitments AS (
-            SELECT DISTINCT
-              c1.sku AS target_sku,
-              app_elem AS inherited_app
-            FROM elimfilters_catalog c1
-            JOIN elimfilters_catalog c2 ON (
-              c1.oem_codes && c2.oem_codes 
-              OR c1.competitor_codes && c2.competitor_codes
-            )
-            CROSS JOIN LATERAL jsonb_array_elements(c2.equipment_applications) AS app_elem
-            WHERE c1.duty = 'HEAVY_DUTY'
-              AND (c1.equipment_applications IS NULL OR jsonb_array_length(c1.equipment_applications) = 0)
-              AND c2.equipment_applications IS NOT NULL 
-              AND jsonb_array_length(c2.equipment_applications) > 0
-          ),
-          aggregated_fitments AS (
-            SELECT 
-              target_sku,
-              jsonb_agg(inherited_app) AS new_applications
-            FROM crossref_fitments
-            GROUP BY target_sku
-          )
-          UPDATE elimfilters_catalog c
-          SET equipment_applications = af.new_applications
-          FROM aggregated_fitments af
-          WHERE c.sku = af.target_sku
-        `);
-      } catch (err) {
-        console.error("HD application propagation error:", err.message);
-      }
     },
 
     async enqueue(e) {

@@ -51,7 +51,7 @@ app.post("/webhook", express.raw({ type: "application/json", limit: "1mb" }), as
   webhookStats.received++;
   webhookStats.lastReceivedAt = new Date().toISOString();
   const signature = req.get("x-li-signature") || req.get("x-linkedin-signature");
-  if (signature && !verifyLinkedinSignature(req.body, signature, config.linkedinClientSecret)) {
+  if (!verifyLinkedinSignature(req.body, signature, config.linkedinClientSecret)) {
     webhookStats.rejected++;
     webhookStats.lastError = "invalid_signature";
     return res.sendStatus(401);
