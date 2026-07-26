@@ -18,7 +18,10 @@ export function createWorker({ config, db }) {
 
       for (const job of jobs) {
         try {
-          const replyText = await nvidia.generateReply(job.message_text);
+          const replyText = await nvidia.generateReply(job.message_text, {
+            conversationId: job.author_urn || job.target_urn || job.event_id,
+            authorName: job.author_name
+          });
           if (!replyText || replyText === "NO_REPLY") {
             await db.complete(job.event_id, "NO_REPLY");
             continue;
