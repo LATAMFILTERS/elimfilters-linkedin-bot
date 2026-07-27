@@ -3,12 +3,26 @@ import { getConfig } from "./config.js";
 import { createDb } from "./db.js";
 import { verifyLinkedinSignature, normalizeLinkedinEvents } from "./security.js";
 import { createWorker } from "./worker.js";
+import { createELIMFILTERSConversationWorker } from "./queue/elimfilters-worker.js";
 
 const config = getConfig();
 const db = createDb(config.databaseUrl);
 await db.init();
-const worker = createWorker({ config, db });
+
+// Use ELIMFILTERS conversation worker if enabled via env var
+const useELIMFILTERS = process.env.USE_ELIMFILTERS_PHILOSOPHY === 'true';
+const worker = useELIMFILTERS
+  ? createELIMFILTERSConversationWorker({ config, db })
+  : createWorker({ config, db });
+
 const app = express();
+
+// Log which conversation worker is active
+if (useELIMFILTERS) {
+  console.log("🟢 Using ELIMFILTERS expert consultant conversation flow");
+} else {
+  console.log("⚪ Using legacy NVIDIA-based conversation worker");
+}
 
 const webhookStats = { received: 0, rejected: 0, lastEventCount: 0, lastReceivedAt: null, lastError: null };
 
