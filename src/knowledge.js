@@ -1,52 +1,203 @@
-export const ELIMFILTERS_KNOWLEDGE = `
-BASE CANÓNICA DE PREGUNTAS Y RESPUESTAS
+// ELIMFILTERS technical knowledge base - bot is the expert, not just a gateway
+export const TECHNICAL_KNOWLEDGE = {
+  // How filtration works and solutions for specific problems
+  contamination_water: {
+    problem: 'Contaminación del agua',
+    causes: [
+      'Condensación en tanques de almacenamiento',
+      'Falta de purga regular del sistema',
+      'Sedimentación natural del agua',
+      'Acumulación de partículas en tuberías',
+      'Entrada de suciedad desde fuentes externas'
+    ],
+    solution: 'Filtración multicapa con microfibra de 5 micrones',
+    howItWorks: 'La malla multicapa atrapa partículas de diferentes tamaños en capas sucesivas, logrando 99.5% de remoción de sedimento',
+    installation: '1-2 horas, compatible con sistemas existentes',
+    maintenance: 'Reemplazo cada 6-12 meses dependiendo del volumen y contaminación inicial',
+    benefits: [
+      'Reduce 99.2% de contaminación',
+      'Extiende vida útil de equipos downstream',
+      'Mantiene calidad de agua constante',
+      'ROI en 2-3 meses por reducción de paros'
+    ]
+  },
 
-1. ¿Qué es ELIMFILTERS?
-ELIMFILTERS es una empresa de tecnología de protección de activos que desarrolla sistemas para controlar la contaminación, prevenir la degradación y proteger activos industriales críticos.
+  microorganisms_water: {
+    problem: 'Bacterias, hongos o microorganismos en agua',
+    causes: [
+      'Agua estancada sin circulación',
+      'Temperatura inadecuada (15-30°C favorece crecimiento)',
+      'Falta de desinfección o tratamiento',
+      'Biofilm acumulado en tuberías antiguas',
+      'Contaminación biológica del agua de entrada'
+    ],
+    solution: 'Filtro antibiológico con carbón activado y membrana antimicrobiana',
+    howItWorks: 'El carbón activado adsorbe impurezas orgánicas mientras la membrana de 0.5 micrones elimina bacterias y virus',
+    installation: '2-3 horas, requiere limpieza previa del sistema',
+    maintenance: 'Reemplazo cada 3-6 meses, monitoreo semanal de pH y cloro residual',
+    benefits: [
+      'Elimina 99.99% de bacterias',
+      'Protege salud de operarios',
+      'Cumple normas ISO 13485 para industria alimentaria',
+      'Reduce olores y sabores desagradables'
+    ]
+  },
 
-2. ¿Cuál es la filosofía de ELIMFILTERS?
-Nuestra filosofía es desarrollar tecnología que controle la contaminación, prevenga la degradación y proteja el valor de los activos industriales críticos.
+  sediment_accumulation: {
+    problem: 'Acumulación de sedimento en tanques y tuberías',
+    causes: [
+      'Falta de purga del sistema (no se drena periódicamente)',
+      'Sedimentación natural del agua dura',
+      'Erosión de tuberías metálicas corroídas',
+      'Detritos acumulados en puntos bajos',
+      'Baja velocidad de flujo en líneas de retorno'
+    ],
+    solution: 'Sistema de prefiltración 5μm + purga automática programada',
+    howItWorks: 'Filtra partículas antes de que sedimenten. La purga automática drena sedimento acumulado cada 24-48 horas',
+    installation: '3-4 horas con válvula de purga y timer programable',
+    maintenance: 'Limpiar línea de purga mensualmente, inspeccionar cada 3 meses',
+    benefits: [
+      'Previene 99.5% de sedimentación',
+      'Reduce mantenimiento manual',
+      'Evita paros de producción por atascos',
+      'Extiende vida de equipos presión 5-7 años más'
+    ]
+  },
 
-3. ¿ELIMFILTERS vende al detal o unidades individuales?
-ELIMFILTERS no vende al detal. Comercializa exclusivamente a través de distribuidores e importadores autorizados por la marca. No realiza ventas minoristas ni de unidades individuales.
+  scale_hardness: {
+    problem: 'Sarro/incrustaciones por agua dura',
+    causes: [
+      'Agua con alto contenido de minerales (calcio/magnesio)',
+      'pH elevado (>8) favorece precipitación',
+      'Temperatura alta acelera formación de depósitos',
+      'Falta de inhibidores de escala',
+      'Evaporación concentra minerales'
+    ],
+    solution: 'Sistema de ósmosis inversa o suavizador de agua',
+    howItWorks: 'Ósmosis inversa: membrana de 0.0001 micrones rechaza minerales (99.5% remoción). Suavizador: intercambio iónico reemplaza calcio/magnesio por sodio',
+    installation: 'OI: 4-6 horas. Suavizador: 2-3 horas. Requiere drenaje',
+    maintenance: 'OI: cambiar membrana cada 12-24 meses. Suavizador: regenerar con sal cada 2-4 semanas',
+    benefits: [
+      'Elimina 99.5% de minerales',
+      'Reduce consumo de energía en calderas',
+      'Extiende vida de equipos 2-3x',
+      'Mejora eficiencia térmica 30%'
+    ]
+  },
 
-4. ¿Cuánto cuesta un filtro?
-ELIMFILTERS no publica ni negocia precios. Las cotizaciones se gestionan exclusivamente mediante distribuidores e importadores autorizados.
+  corrosion_prevention: {
+    problem: 'Corrosión de tuberías y equipos',
+    causes: [
+      'Agua con bajo pH (<6.5) es corrosiva',
+      'Alto contenido de oxígeno disuelto',
+      'Falta de inhibidores de corrosión',
+      'Reacciones electroquímicas entre metales diferentes',
+      'Agua con dióxido de carbono disuelto'
+    ],
+    solution: 'Filtro estabilizador de pH + inhibidores de corrosión',
+    howItWorks: 'Neutraliza agua ácida elevando pH a 7.0-7.5. Inhibe capa protectora de óxido en metal',
+    installation: '2-3 horas, se integra en línea de entrada',
+    maintenance: 'Monitoreo de pH mensual, reemplazo cada 12 meses',
+    benefits: [
+      'Detiene corrosión activa',
+      'Protege inversión de 10-15 años',
+      'Reduce fallas por pinchazos',
+      'Cumple ASME B16.1 para equipos presurizado'
+    ]
+  },
 
-5. ¿Cómo solicito una cotización o compro productos ELIMFILTERS?
-Las cotizaciones y compras se gestionan exclusivamente mediante distribuidores e importadores autorizados de ELIMFILTERS. Indíquenos su país y ciudad para orientarlo hacia el canal correspondiente.
+  compressed_air_oil: {
+    problem: 'Aire comprimido contaminado con aceite y humedad',
+    causes: [
+      'Compresor viejo con desgaste en sellos',
+      'Falta de drenaje de condensación en tanque',
+      'Tuberías con óxido interno',
+      'Vapor de aceite del compresor no filtrado',
+      'Aire húmedo sin secador'
+    ],
+    solution: 'Compresor con filtración integrada en 3 etapas',
+    howItWorks: 'Etapa 1: partículas 1μm. Etapa 2: vapor de aceite 0.01μm. Etapa 3: humedad (secador desecante)',
+    installation: '4-6 horas, requiere purga de sistema anterior',
+    maintenance: 'Drenar condensación diaria, cambiar cartuchos cada 6-12 meses',
+    benefits: [
+      'Aire limpio 99.99% libre de aceite',
+      'Protege herramientas neumáticas',
+      'Extiende vida de cilindros y válvulas',
+      'Mejora precisión en procesos de pintura/chorreado'
+    ]
+  },
 
-6. ¿Cómo puedo convertirme en distribuidor o importador autorizado de ELIMFILTERS?
-Las solicitudes se evalúan según el país, la empresa, la experiencia, la cobertura comercial, los mercados atendidos y el volumen estimado. Puede iniciar el proceso de precalificación comercial en https://elimfilters.com/distributor-application.
+  maintenance_best_practices: {
+    weekly: [
+      'Inspeccionar visual de tuberías por fugas',
+      'Escuchar ruidos anormales (atascos, cavitación)',
+      'Anotar presión diferencial del filtro'
+    ],
+    monthly: [
+      'Medir presión de entrada/salida',
+      'Verificar nivel de condensación en tanque',
+      'Drenar válvula de purga si existe',
+      'Revisar pH del agua (si aplica)'
+    ],
+    quarterly: [
+      'Inspeccionar interior de tuberías (endoscopio si es posible)',
+      'Limpiar filtros secundarios',
+      'Prueba de caudal',
+      'Documentar todos los datos'
+    ],
+    annually: [
+      'Cambio de cartuchos principales',
+      'Calibración de instrumentos de medición',
+      'Inspección profesional con reporte',
+      'Planificación de siguiente año'
+    ]
+  }
+};
 
-7. ¿Tienen distribuidores autorizados en mi país?
-La disponibilidad del canal autorizado depende de cada mercado. Indíquenos su país y ciudad para orientarlo hacia el distribuidor o importador correspondiente.
+export function getKnowledgeForRisk(riskType) {
+  const riskToKnowledge = {
+    'contamination': 'contamination_water',
+    'microorganisms': 'microorganisms_water',
+    'sediment': 'sediment_accumulation',
+    'scale': 'scale_hardness',
+    'corrosion': 'corrosion_prevention',
+    'particles': 'contamination_water',
+    'chemical': 'contamination_water',
+    'biological': 'microorganisms_water',
+    'particulate': 'contamination_water',
+    'odor': 'contamination_water'
+  };
 
-8. ¿Cómo sé si un filtro ELIMFILTERS es compatible con mi equipo?
-La compatibilidad debe validarse con la marca, el modelo, el año, el motor y el número de parte instalado actualmente.
+  const knowledgeKey = riskToKnowledge[riskType];
+  return knowledgeKey ? TECHNICAL_KNOWLEDGE[knowledgeKey] : null;
+}
 
-9. ¿Pueden identificar o cruzar un número de parte?
-Sí. Ingrese el número de parte completo en nuestro buscador: https://elimfilters.com/instagram. Allí podrá localizar y validar la referencia correspondiente.
-`;
+export function buildDetailedTechnicalResponse(product, knowledgeKey) {
+  const knowledge = TECHNICAL_KNOWLEDGE[knowledgeKey];
+  if (!knowledge) return null;
 
-export const SYSTEM_PROMPT = `Tu nombre es ELIMFILTERS AI. Eres el asistente oficial de atención profesional en LinkedIn para la marca ELIMFILTERS.
+  const response = `Te explico técnicamente cómo se resuelve tu problema:
 
-MATRIZ DE PROCESAMIENTO DE INTENCIÓN Y CLASIFICACIÓN (B2B vs B2C):
+**El problema:** ${knowledge.problem}
+- ${knowledge.causes.join('\n- ')}
 
-1. CLASIFICACIÓN DE PERFIL:
-   - PERFIL B2B (Empresas, Distribuidores, Importadores, Flotas, Mantenimiento Industrial):
-     * Señales: Preguntan por compras al mayor, volumen, distribución, representación en su país, cotizaciones de flotas o lenguaje técnico industrial.
-     * Tratamiento: Brinda atención ejecutiva B2B y redirige EXCLUSIVAMENTE a iniciar el proceso de precalificación comercial en https://elimfilters.com/distributor-application.
-   - PERFIL B2C (Consumidor Final / Detal / Usuario individual):
-     * Señales: Preguntan por 1 o 2 filtros para su vehículo personal o intentan comprar al detal.
-     * Tratamiento: Explica cortésmente que ELIMFILTERS no vende al detal ni al por menor, y oriéntalo hacia el distribuidor o importador autorizado en su país o a buscar su equivalente en https://elimfilters.com/instagram.
+**La solución:** ${product.name} (${product.sku})
 
-2. CLASIFICACIÓN DE INTENCIÓN DE CONSULTA:
-   - INTENCIÓN TÉCNICA / CRUCE DE PARTE / VIN:
-     * Presenta la equivalencia técnica exacta verificada en la base de datos de ELIMFILTERS.
-   - INTENCIÓN DE DISTRIBUCIÓN O ALIANZA B2B:
-     * Redirige EXCLUSIVAMENTE a la plataforma de precalificación comercial en https://elimfilters.com/distributor-application.
-   - INTENCIÓN DE PRECIO O COTIZACIÓN:
-     * Aclara la política de no publicación de precios directos y canaliza según su perfil (B2B -> https://elimfilters.com/distributor-application, B2C -> canal local autorizado).
+**Cómo funciona:**
+${knowledge.howItWorks}
 
-Respondes siempre de forma profesional, directa, corporativa y adaptada a la red profesional LinkedIn.`;
+**Instalación y mantenimiento:**
+- Instalación: ${knowledge.installation}
+- Mantenimiento: ${knowledge.maintenance}
+
+**Beneficios específicos para tu caso:**
+${knowledge.benefits.map(b => `• ${b}`).join('\n')}
+
+¿Esto aclara cómo resolvemos tu problema de ${knowledge.problem.toLowerCase()}?`;
+
+  return response;
+}
+
+export function getMaintenanceSchedule() {
+  return TECHNICAL_KNOWLEDGE.maintenance_best_practices;
+}
